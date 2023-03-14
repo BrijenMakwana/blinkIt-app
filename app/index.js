@@ -3,6 +3,7 @@ import React from "react";
 import SearchBar from "../components/SearchBar";
 import Banner from "../components/Banner";
 import Essential from "../components/Essential";
+import ProductItem from "../components/ProductItem";
 import { essentialsData } from "../assets/data/data";
 
 const index = () => {
