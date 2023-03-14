@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require("../assets/Images/banner1.jpg")}
+        source={require("../assets/images/banner1.jpg")}
         style={styles.image}
       />
     </View>
