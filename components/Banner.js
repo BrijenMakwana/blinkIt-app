@@ -16,7 +16,7 @@ export default Banner;
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
+    width: "94%",
     alignSelf: "center",
     height: 200,
   },
