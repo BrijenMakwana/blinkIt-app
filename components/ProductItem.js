@@ -10,22 +10,19 @@ const AddBtn = () => {
 };
 
 const ProductItem = (props) => {
-  const {
-    discount,
-    image,
-    time,
-    title,
-    quantity,
-    discountedPrice,
-    actualPrice,
-  } = props;
+  const { discount = null, image, time, title, quantity, actualPrice } = props;
+  const discountedPrice =
+    discount === null ? actualPrice : ((100 - discount) * actualPrice) / 100;
   return (
     <View style={styles.container}>
       {/* discount */}
-      <View style={styles.discountContainer}>
-        <Text style={styles.discount}>{discount}%</Text>
-        <Text style={styles.discount}>off</Text>
-      </View>
+      {discount && (
+        <View style={styles.discountContainer}>
+          <Text style={styles.discount}>{discount}%</Text>
+          <Text style={styles.discount}>off</Text>
+        </View>
+      )}
+
       {/* image */}
       <Image src={image} style={styles.image} />
       {/* duration */}
@@ -46,7 +43,7 @@ const ProductItem = (props) => {
       <View style={styles.priceContainer}>
         <View style={styles.price}>
           <Text style={styles.discountedPrice}>₹{discountedPrice}</Text>
-          <Text style={styles.actualPrice}>₹{actualPrice}</Text>
+          {discount && <Text style={styles.actualPrice}>₹{actualPrice}</Text>}
         </View>
         <AddBtn />
       </View>
@@ -58,7 +55,7 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {
-    width: 180,
+    width: 170,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -66,10 +63,11 @@ const styles = StyleSheet.create({
       width: 5,
     },
     shadowOpacity: 0.5,
-    elevation: 10,
+    elevation: 5,
     backgroundColor: "#fff",
     padding: 12,
-    marginHorizontal: 10,
+    marginTop: 10,
+    marginHorizontal: 5,
   },
   discountContainer: {
     backgroundColor: "rgb(50,121,234)",
@@ -83,8 +81,8 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   image: {
-    width: 170,
-    height: 150,
+    width: 130,
+    height: 130,
     resizeMode: "contain",
     alignSelf: "center",
     marginTop: 10,
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 2,
     padding: 3,
-    marginTop: -20,
+    marginTop: 5,
   },
   timeImage: {
     width: 10,
@@ -110,8 +108,8 @@ const styles = StyleSheet.create({
     marginLeft: 3,
   },
   title: {
-    fontSize: 14,
-    fontWeight: "400",
+    fontSize: 13,
+    fontWeight: "500",
     textTransform: "capitalize",
     marginTop: 7,
   },
@@ -119,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: "#585858",
     fontWeight: "400",
-    marginTop: 20,
+    marginTop: 5,
   },
   priceContainer: {
     marginTop: 25,
@@ -154,7 +152,7 @@ const btnStyles = StyleSheet.create({
   btnText: {
     textTransform: "uppercase",
     color: "rgb(0,82,0)",
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: "500",
   },
 });

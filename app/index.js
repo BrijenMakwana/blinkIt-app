@@ -1,14 +1,14 @@
-import { SafeAreaView, StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import React from "react";
 import SearchBar from "../components/SearchBar";
 import Banner from "../components/Banner";
 import Essential from "../components/Essential";
-import ProductItem from "../components/ProductItem";
-import { essentialsData } from "../assets/data/data";
+import { essentialsData, dairyItems } from "../assets/data/data";
+import ProductCategory from "../components/ProductCategory";
 
 const index = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* banner list */}
       <SearchBar />
       <View style={styles.bannerContainer}>
@@ -27,7 +27,10 @@ const index = () => {
           ))}
         </View>
       </View>
-    </SafeAreaView>
+
+      {/* product category */}
+      <ProductCategory heading="Dairy and Bread" data={dairyItems} />
+    </ScrollView>
   );
 };
 
