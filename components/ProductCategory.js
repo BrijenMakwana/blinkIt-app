@@ -19,6 +19,7 @@ const ProductCategory = ({ heading, data }) => {
             quantity={item.quantity}
             actualPrice={item.actualPrice}
             key={item.id}
+            discount={item.discount}
           />
         ))}
       </View>
@@ -30,7 +31,7 @@ export default ProductCategory;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
+    padding: 15,
   },
   header: {
     flexDirection: "row",
@@ -40,17 +41,18 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 16,
     fontWeight: "bold",
+    textTransform: "capitalize",
   },
   seeAll: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 12,
+    fontWeight: "700",
     color: "rgb(0,82,0)",
   },
   productList: {
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     marginTop: 20,
   },
 });

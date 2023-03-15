@@ -67,18 +67,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     padding: 12,
     marginTop: 10,
-    marginHorizontal: 5,
+    // marginHorizontal: 6,
   },
   discountContainer: {
     backgroundColor: "rgb(50,121,234)",
     position: "absolute",
     padding: 5,
     left: 12,
+    alignItems: "center",
   },
   discount: {
     color: "#fff",
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: "500",
+    textTransform: "uppercase",
   },
   image: {
     width: 130,

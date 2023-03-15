@@ -3,12 +3,17 @@ import React from "react";
 import SearchBar from "../components/SearchBar";
 import Banner from "../components/Banner";
 import Essential from "../components/Essential";
-import { essentialsData, dairyItems } from "../assets/data/data";
+import {
+  essentialsData,
+  dairyItems,
+  vegItems,
+  chocolatesItems,
+} from "../assets/data/data";
 import ProductCategory from "../components/ProductCategory";
 
 const index = () => {
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* banner list */}
       <SearchBar />
       <View style={styles.bannerContainer}>
@@ -30,6 +35,8 @@ const index = () => {
 
       {/* product category */}
       <ProductCategory heading="Dairy and Bread" data={dairyItems} />
+      <ProductCategory heading="Vegetables & Fruits" data={vegItems} />
+      <ProductCategory heading="Chocolates" data={chocolatesItems} />
     </ScrollView>
   );
 };
