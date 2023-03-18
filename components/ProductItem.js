@@ -1,20 +1,34 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View, Pressable } from "react-native";
 import React from "react";
-
-const AddBtn = () => {
-  return (
-    <Pressable style={btnStyles.container}>
-      <Text style={btnStyles.btnText}>add</Text>
-    </Pressable>
-  );
-};
+import AddBtn from "../components/AddBtn";
 
 const ProductItem = (props) => {
-  const { discount = null, image, time, title, quantity, actualPrice } = props;
+  const {
+    discount = null,
+    image,
+    time,
+    title,
+    quantity,
+    actualPrice,
+    productDetails,
+    openProductModal,
+  } = props;
   const discountedPrice =
     discount === null ? actualPrice : ((100 - discount) * actualPrice) / 100;
   return (
-    <View style={styles.container}>
+    <Pressable
+      style={styles.container}
+      onPress={() =>
+        openProductModal({
+          image: image,
+          time: time,
+          title: title,
+          quantity: quantity,
+          actualPrice: actualPrice,
+          productDetails: productDetails,
+        })
+      }
+    >
       {/* discount */}
       {discount && (
         <View style={styles.discountContainer}>
@@ -24,7 +38,9 @@ const ProductItem = (props) => {
       )}
 
       {/* image */}
-      <Image src={image} style={styles.image} />
+      <View style={styles.imageContainer}>
+        <Image src={image} style={styles.image} />
+      </View>
       {/* duration */}
       <View style={styles.duration}>
         <Image
@@ -47,7 +63,7 @@ const ProductItem = (props) => {
         </View>
         <AddBtn />
       </View>
-    </View>
+    </Pressable>
   );
 };
 
@@ -55,36 +71,43 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {
-    width: 170,
+    width: 120,
     borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      height: 5,
-      width: 5,
-    },
-    shadowOpacity: 0.5,
-    elevation: 5,
+    // shadowColor: "#000",
+    // shadowOffset: {
+    //   height: 5,
+    //   width: 5,
+    // },
+    // shadowOpacity: 0.5,
+    // elevation: 5,
     backgroundColor: "#fff",
-    padding: 12,
-    marginTop: 10,
-    // marginHorizontal: 6,
+    marginRight: 10,
   },
   discountContainer: {
     backgroundColor: "rgb(50,121,234)",
     position: "absolute",
-    padding: 5,
+    padding: 3,
     left: 12,
     alignItems: "center",
   },
   discount: {
     color: "#fff",
-    fontSize: 9,
+    fontSize: 8,
     fontWeight: "500",
     textTransform: "uppercase",
   },
+  imageContainer: {
+    borderWidth: 1,
+    borderColor: "lightgray",
+    borderRadius: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: 120,
+  },
   image: {
-    width: 130,
-    height: 130,
+    width: "70%",
+    height: "70%",
     resizeMode: "contain",
     alignSelf: "center",
     marginTop: 10,
@@ -95,7 +118,7 @@ const styles = StyleSheet.create({
     width: 50,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 2,
+    borderRadius: 4,
     padding: 3,
     marginTop: 5,
   },
@@ -104,25 +127,25 @@ const styles = StyleSheet.create({
     height: 10,
   },
   time: {
-    fontSize: 8,
+    fontSize: 7,
     textTransform: "uppercase",
     fontWeight: "500",
     marginLeft: 3,
   },
   title: {
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: "500",
     textTransform: "capitalize",
     marginTop: 7,
   },
   quantity: {
-    fontSize: 10,
+    fontSize: 9,
     color: "#585858",
     fontWeight: "400",
     marginTop: 5,
   },
   priceContainer: {
-    marginTop: 25,
+    marginTop: 15,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -130,6 +153,7 @@ const styles = StyleSheet.create({
   price: {},
   discountedPrice: {
     fontSize: 12,
+    fontWeight: "500",
   },
   actualPrice: {
     fontSize: 11,
@@ -137,24 +161,5 @@ const styles = StyleSheet.create({
     textDecorationLine: "line-through",
     textDecorationColor: "gray",
     marginTop: 2,
-  },
-});
-
-const btnStyles = StyleSheet.create({
-  container: {
-    backgroundColor: "rgb(246,255,249)",
-    borderColor: "rgb(0,82,0)",
-    borderWidth: 1,
-    paddingVertical: 4,
-    paddingHorizontal: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 5,
-  },
-  btnText: {
-    textTransform: "uppercase",
-    color: "rgb(0,82,0)",
-    fontSize: 12,
-    fontWeight: "500",
   },
 });
