@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ProductItem from "./ProductItem";
+import { FlatList } from "react-native-gesture-handler";
 
-const ProductCategory = ({ heading, data }) => {
+const ProductCategory = ({ heading, data, openProductModal }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -11,17 +12,14 @@ const ProductCategory = ({ heading, data }) => {
       </View>
 
       <View style={styles.productList}>
-        {data.map((item) => (
-          <ProductItem
-            image={item.image}
-            time={item.duration}
-            title={item.title}
-            quantity={item.quantity}
-            actualPrice={item.actualPrice}
-            key={item.id}
-            discount={item.discount}
-          />
-        ))}
+        <FlatList
+          data={data}
+          renderItem={({ item }) => (
+            <ProductItem {...item} openProductModal={openProductModal} />
+          )}
+          keyExtractor={(item) => item.id}
+          horizontal
+        />
       </View>
     </View>
   );
@@ -49,10 +47,7 @@ const styles = StyleSheet.create({
     color: "rgb(0,82,0)",
   },
   productList: {
-    flexDirection: "row",
-    flexWrap: "wrap",
     alignItems: "center",
-    justifyContent: "space-between",
-    marginTop: 20,
+    marginTop: 15,
   },
 });
