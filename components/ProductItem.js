@@ -73,13 +73,6 @@ const styles = StyleSheet.create({
   container: {
     width: 120,
     borderRadius: 10,
-    // shadowColor: "#000",
-    // shadowOffset: {
-    //   height: 5,
-    //   width: 5,
-    // },
-    // shadowOpacity: 0.5,
-    // elevation: 5,
     backgroundColor: "#fff",
     marginRight: 10,
   },
