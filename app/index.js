@@ -26,10 +26,16 @@ import ProductDetails from "../components/ProductDetails";
 const index = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [productModalData, setProductModalData] = useState({});
+  const [showAllProductDetails, setShowAllProductDetails] = useState(false);
 
   const openProductModal = (product) => {
     setIsVisible(true);
     setProductModalData(product);
+  };
+
+  const closeProductModal = (product) => {
+    setIsVisible(false);
+    setShowAllProductDetails(false);
   };
   return (
     <ScrollView
@@ -79,7 +85,7 @@ const index = () => {
 
       {/* product modal */}
       <Modal visible={isVisible} transparent={true}>
-        <Pressable style={styles.closeBtn} onPress={() => setIsVisible(false)}>
+        <Pressable style={styles.closeBtn} onPress={closeProductModal}>
           <Entypo name="cross" size={24} color="#fff" />
         </Pressable>
         <ScrollView style={styles.modalContainer}>
@@ -141,13 +147,25 @@ const index = () => {
           {/* product details */}
           <View style={styles.productDetails}>
             <Text style={styles.productDetailsHeading}>Product details</Text>
-            {productModalData?.productDetails?.map((item) => (
-              <ProductDetails
-                title={item.title}
-                description={item.description}
-                key={item.id}
-              />
-            ))}
+            {productModalData?.productDetails?.map((item, index) => {
+              if (index === 0 || showAllProductDetails) {
+                return (
+                  <ProductDetails
+                    title={item.title}
+                    description={item.description}
+                    key={item.id}
+                  />
+                );
+              }
+            })}
+            {!showAllProductDetails && (
+              <Pressable
+                onPress={() => setShowAllProductDetails(true)}
+                style={{ paddingVertical: 5 }}
+              >
+                <Text style={styles.showMoreText}>View more details</Text>
+              </Pressable>
+            )}
           </View>
         </ScrollView>
       </Modal>
@@ -185,7 +203,7 @@ const styles = StyleSheet.create({
   },
   modalContainer: {
     backgroundColor: "#fff",
-    marginTop: 15,
+    marginTop: 90,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
@@ -196,12 +214,13 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "center",
+    position: "absolute",
+    left: "45%",
+    top: 35,
   },
   images: {
     flexDirection: "row",
     alignItems: "center",
-
     marginVertical: 15,
   },
   imageContainer: {
@@ -273,5 +292,9 @@ const styles = StyleSheet.create({
   productDetailsHeading: {
     fontWeight: 18,
     fontWeight: "bold",
+  },
+  showMoreText: {
+    fontSize: 14,
+    color: "rgb(0,82,0)",
   },
 });
