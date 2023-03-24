@@ -6,6 +6,7 @@ import {
   Modal,
   Image,
   Pressable,
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
@@ -82,7 +83,13 @@ const index = () => {
           <Entypo name="cross" size={24} color="#fff" />
         </Pressable>
         <ScrollView style={styles.modalContainer}>
-          <ScrollView contentContainerStyle={styles.images} horizontal>
+          <ScrollView
+            contentContainerStyle={styles.images}
+            horizontal
+            snapToAlignment="start"
+            decelerationRate="fast"
+            snapToInterval={Dimensions.get("window").width}
+          >
             <View style={styles.imageContainer}>
               <Image src={productModalData.image} style={styles.productImage} />
             </View>
@@ -93,15 +100,6 @@ const index = () => {
               <Image src={productModalData.image} style={styles.productImage} />
             </View>
           </ScrollView>
-
-          {/* duration */}
-          <View style={styles.duration}>
-            <Image
-              source={require("../assets/images/time.png")}
-              style={styles.timeImage}
-            />
-            <Text style={styles.time}>{productModalData.time} mins</Text>
-          </View>
 
           {/* title */}
           <View style={styles.titleContainer}>
@@ -114,16 +112,13 @@ const index = () => {
               />
             </View>
           </View>
-
-          {/* price */}
-          <View style={styles.priceContainer}>
-            <View style={styles.quantityContainer}>
-              <Text style={styles.quantity}>
-                {productModalData.quantity} ml
-              </Text>
-              <Text style={styles.price}>₹{productModalData.actualPrice}</Text>
-            </View>
-            <AddBtn />
+          {/* duration */}
+          <View style={styles.duration}>
+            <Image
+              source={require("../assets/images/time.png")}
+              style={styles.timeImage}
+            />
+            <Text style={styles.time}>{productModalData.time} mins</Text>
           </View>
 
           {/* devider */}
@@ -133,9 +128,15 @@ const index = () => {
               width: "93%",
               alignSelf: "center",
               backgroundColor: "#E0E0E0",
-              marginTop: 5,
+              marginVertical: 15,
             }}
           />
+
+          {/* price */}
+          <View style={styles.priceContainer}>
+            <Text style={styles.quantity}>{productModalData.quantity} ml</Text>
+            <Text style={styles.price}>₹{productModalData.actualPrice}</Text>
+          </View>
 
           {/* product details */}
           <View style={styles.productDetails}>
@@ -199,25 +200,15 @@ const styles = StyleSheet.create({
   },
   images: {
     flexDirection: "row",
-    paddingVertical: 15,
     alignItems: "center",
-    paddingLeft: 10,
+
+    marginVertical: 15,
   },
   imageContainer: {
-    shadowColor: "#000",
-    shadowOffset: {
-      height: 5,
-      width: 5,
-    },
-    shadowOpacity: 0.5,
-    elevation: 5,
-    backgroundColor: "#fff",
     height: 230,
-    width: 230,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 10,
-    borderRadius: 5,
   },
   productImage: {
     width: 200,
@@ -252,8 +243,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   title: {
-    fontSize: 15,
-    fontWeight: "500",
+    fontSize: 18,
+    fontWeight: "bold",
     textTransform: "capitalize",
   },
   shareIconContainer: {
@@ -265,23 +256,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   priceContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 10,
-    marginTop: 10,
-    borderLeftColor: "rgb(0,82,0)",
-    borderLeftWidth: 5,
-    paddingVertical: 5,
+    paddingLeft: 10,
   },
-  quantityContainer: {},
   quantity: {
     fontSize: 13,
   },
   price: {
-    marginTop: 7,
     fontSize: 14,
     fontWeight: "500",
+    marginTop: 5,
   },
   productDetails: {
     marginTop: 10,
