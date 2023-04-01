@@ -22,6 +22,7 @@ import ProductCategory from "../components/ProductCategory";
 import { MaterialCommunityIcons, Entypo } from "@expo/vector-icons";
 import AddBtn from "../components/AddBtn";
 import ProductDetails from "../components/ProductDetails";
+import { Link } from "expo-router";
 
 const index = () => {
   const [isVisible, setIsVisible] = useState(false);

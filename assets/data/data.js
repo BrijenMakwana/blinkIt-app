@@ -1053,4 +1053,85 @@ const chocolatesItems = [
   },
 ];
 
-export { essentialsData, dairyItems, vegItems, chocolatesItems };
+const productsCategories = [
+  {
+    id: "1",
+    categoryTitle: "Fresh Vegetables",
+    image:
+      "https://images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    id: "2",
+    categoryTitle: "Fresh Fruits",
+    image:
+      "https://images.unsplash.com/photo-1517260739337-6799d239ce83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    id: "3",
+    categoryTitle: "Seasonal",
+    image:
+      "https://images.unsplash.com/photo-1566803649067-a8010e637be9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+  },
+  {
+    id: "4",
+    categoryTitle: "Exotics",
+    image:
+      "https://images.unsplash.com/photo-1632649778037-425b3d8719a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+  },
+  {
+    id: "5",
+    categoryTitle: "Freshly Cut & Sprouts",
+    image:
+      "https://images.unsplash.com/photo-1493882946517-213a21fe70f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    id: "6",
+    categoryTitle: "Certified Organic",
+    image:
+      "https://images.unsplash.com/photo-1604337214275-86010944959d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1940&q=80",
+  },
+  {
+    id: "7",
+    categoryTitle: "leafies & Herbs",
+    image:
+      "https://images.unsplash.com/photo-1653842647607-cc422aa39e42?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
+  },
+  {
+    id: "8",
+    categoryTitle: "Fresh Juice & Dips",
+    image:
+      "https://images.unsplash.com/photo-1528556860752-2a6a19a285a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1970&q=80",
+  },
+  {
+    id: "9",
+    categoryTitle: "Hvdroponic",
+    image:
+      "https://images.unsplash.com/photo-1631364918796-b5cf912d661d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: "10",
+    categoryTitle: "Flowers & Leaves",
+    image:
+      "https://images.unsplash.com/photo-1516868173900-c6cf9dc8863c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    id: "11",
+    categoryTitle: "Combo & Recipes",
+    image:
+      "https://images.unsplash.com/photo-1666281605431-42d282d48bf9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    id: "12",
+    categoryTitle: "Frozen Veg",
+    image:
+      "https://images.unsplash.com/photo-1530632789071-8543f47edb34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+  },
+];
+
+export {
+  essentialsData,
+  dairyItems,
+  vegItems,
+  chocolatesItems,
+  productsCategories,
+};
