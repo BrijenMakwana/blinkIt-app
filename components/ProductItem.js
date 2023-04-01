@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View, Pressable } from "react-native";
 import React from "react";
 import AddBtn from "../components/AddBtn";
+import { Ionicons } from "@expo/vector-icons";
 
 const ProductItem = (props) => {
   const {
@@ -36,6 +37,11 @@ const ProductItem = (props) => {
           <Text style={styles.discount}>off</Text>
         </View>
       )}
+
+      {/* like */}
+      <Pressable style={styles.likeBtn}>
+        <Ionicons name="heart-outline" size={20} color="#787878" />
+      </Pressable>
 
       {/* image */}
       <View style={styles.imageContainer}>
@@ -89,6 +95,13 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     textTransform: "uppercase",
   },
+  likeBtn: {
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
+    right: 10,
+    top: 10,
+  },
   imageContainer: {
     borderWidth: 1,
     borderColor: "lightgray",
@@ -99,8 +112,8 @@ const styles = StyleSheet.create({
     height: 120,
   },
   image: {
-    width: "70%",
-    height: "70%",
+    width: "60%",
+    height: "60%",
     resizeMode: "contain",
     alignSelf: "center",
     marginTop: 10,
