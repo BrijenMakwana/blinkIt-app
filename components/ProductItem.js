@@ -13,12 +13,19 @@ const ProductItem = (props) => {
     actualPrice,
     productDetails,
     openProductModal,
+    imageBorder = true, //if border is require around image or not
   } = props;
   const discountedPrice =
     discount === null ? actualPrice : ((100 - discount) * actualPrice) / 100;
   return (
     <Pressable
-      style={styles.container}
+      style={[
+        styles.container,
+        {
+          width: imageBorder ? 120 : 140,
+          padding: imageBorder ? 0 : 10,
+        },
+      ]}
       onPress={() =>
         openProductModal({
           image: image,
@@ -44,7 +51,15 @@ const ProductItem = (props) => {
       </Pressable>
 
       {/* image */}
-      <View style={styles.imageContainer}>
+
+      <View
+        style={[
+          styles.imageContainer,
+          {
+            borderWidth: imageBorder ? 1 : 0,
+          },
+        ]}
+      >
         <Image src={image} style={styles.image} />
       </View>
       {/* duration */}
@@ -77,10 +92,9 @@ export default ProductItem;
 
 const styles = StyleSheet.create({
   container: {
-    width: 120,
     borderRadius: 10,
     backgroundColor: "#fff",
-    marginRight: 10,
+    margin: 5,
   },
   discountContainer: {
     backgroundColor: "rgb(50,121,234)",

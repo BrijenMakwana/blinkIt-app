@@ -3,11 +3,39 @@ import React from "react";
 import {} from "react-native";
 
 const SidebarProduct = (props) => {
-  const { categoryTitle, image } = props;
+  const { categoryTitle, image, changeProductCategory, activeCategory } = props;
+
+  const imageSize = activeCategory === categoryTitle ? 53 : 50;
+  const textWeight = activeCategory === categoryTitle ? "700" : "300";
+  const textColor = activeCategory === categoryTitle ? "#000" : "#505050";
+
   return (
-    <Pressable style={styles.container}>
-      <Image src={image} style={styles.image} alt={categoryTitle} />
-      <Text style={styles.title}>{categoryTitle}</Text>
+    <Pressable
+      style={styles.container}
+      onPress={() => changeProductCategory(categoryTitle)}
+    >
+      <Image
+        src={image}
+        style={[
+          styles.image,
+          {
+            width: imageSize,
+            height: imageSize,
+          },
+        ]}
+        alt={categoryTitle}
+      />
+      <Text
+        style={[
+          styles.title,
+          {
+            fontWeight: textWeight,
+            color: textColor,
+          },
+        ]}
+      >
+        {categoryTitle}
+      </Text>
     </Pressable>
   );
 };
@@ -23,16 +51,13 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   image: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    borderRadius: 50,
     resizeMode: "contain",
   },
   title: {
     textTransform: "capitalize",
     fontSize: 11,
     marginTop: 5,
-    color: "#505050",
     textAlign: "center",
     paddingHorizontal: 5,
   },
