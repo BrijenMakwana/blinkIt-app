@@ -1,13 +1,16 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Link } from "expo-router";
 
 const Essential = (props) => {
   const { image, title } = props;
   return (
-    <View style={styles.container}>
-      <Image source={image} style={styles.image} />
-      <Text style={styles.title}>{title}</Text>
-    </View>
+    <Link href="/ProductsScreen">
+      <View style={styles.container}>
+        <Image source={image} style={styles.image} />
+        <Text style={styles.title}>{title}</Text>
+      </View>
+    </Link>
   );
 };
 
